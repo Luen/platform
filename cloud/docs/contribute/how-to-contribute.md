@@ -14,7 +14,7 @@ Install [Node.js 18](https://nodejs.org/en/download/) or higher and [Yarn](https
 
 1. Clone the `https://github.com/ulixee/platform.git` repository.
 
-**Yarn** will add dependencies from your test projects to the root `yarn.lock` file. So you should not commit changes in that file unless you have added dependencies to any of the core packages. If you need to commit it, remove your projects from the `~/projects` folder temporary and run `yarn` in the root folder. Yarn will then clean up the lock file with only core dependencies. Commit the file and move your projects back and run `yarn` again to start developing.
+**Yarn** will add dependencies from your test projects to the root `pnpm-lock.yaml` file. So you should not commit changes in that file unless you have added dependencies to any of the core packages. If you need to commit it, remove your projects from the `~/projects` folder temporary and run `yarn` in the root folder. Yarn will then clean up the lock file with only core dependencies. Commit the file and move your projects back and run `yarn` again to start developing.
 
 ## Contributing to the docs
 

@@ -136,7 +136,7 @@ Manifest Settings take the following precedence:
 
 You can build, interact and upload your Datastores using the packager module included as a devDependency of @ulixee/datastore.
 
-You can also use a global Ulixee CLI: `npm install -g @ulixee/cli`.
+You can also use a global Ulixee CLI: `pnpm install -g @ulixee/cli`.
 
 ### Deploying a .dbx
 

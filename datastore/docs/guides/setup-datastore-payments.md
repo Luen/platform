@@ -16,7 +16,7 @@ When you install Ulixee Cloud, it will install a few dependencies:
 - `@ulixee/datastore-plugins-hero` - A package for running Hero-wrapped Datastore
 
 ```bash
-npm install @ulixee/cloud
+pnpm install @ulixee/cloud
 ```
 
 ## 2. Setup your Localchain

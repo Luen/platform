@@ -2,7 +2,7 @@
 
 Run this to upgrade Ulixee Client to latest version.
 
-- `npm install @ulixee/client@latest`
+- `pnpm install @ulixee/client@latest`
 
 ### Problems after upgrading
 

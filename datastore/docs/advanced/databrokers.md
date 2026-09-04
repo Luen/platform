@@ -35,7 +35,7 @@ client.query(`SELECT * FROM publishingSchedule`).then(records => {
 Databrokers are built to run as a CLI. A Datastore doesn't need to do anything special to support Databrokers. The Databroker CLI will automatically handle the Argon Localchain payment and data access at a client level.
 
 ```bash
-npm install @ulixee/databroker
+pnpm install @ulixee/databroker
 ```
 
 ## Server Usage

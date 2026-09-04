@@ -38,8 +38,8 @@ RUN mkdir -p /opt/bin && chmod +x /dev/shm
 
 WORKDIR /app/ulixee
 
-RUN cd /app/ulixee && yarn init -yp \
-    && yarn add @ulixee/cloud@$VERSION \
+RUN cd /app/ulixee && pnpm init -yp \
+    && pnpm add @ulixee/cloud@$VERSION \
     && $ADD_TO_INSTALL \
     && $(npx install-browser-deps) \
     && groupadd -r ulixee && useradd -r -g ulixee -G audio,video ulixee \

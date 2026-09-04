@@ -8,7 +8,7 @@ We should eventually automate this to test using the "published" versions of pac
 - `npx ulx-repo-version-bump prerelease` (patch prerelease version - replace with bump if not in a prerelease)
 - `git push origin main --tags` (make sure to push any tags. tags trigger some release Assets to be built)
 - github.com - ** during CI setup, create a DRAFT release for the tag with release notes. Publish once assets are created.
-- `yarn build:dist` (build a distro)
+- `pnpm build:dist` (build a distro)
 - `cd build-dist && lerna publish from-package` (publish built files - you might test in here)
 - from @ulixee/ulixee: `npx ulx-repo-version-check fix` (update dependencies)
 

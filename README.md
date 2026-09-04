@@ -28,7 +28,7 @@ To use the image, we have a [run.sh](./cloud/tools/docker/run.sh) script that wi
 
 This project serves as a Monorepo for developing the Ulixee Datastore and Cloud. If you are developing, you might wish to have [hero][hero] as a project adjacent to this one.
 
-1Run `yarn build:all` from the this repository to build all the projects.
+1Run `pnpm build:all` from the this repository to build all the projects.
 
 Learn more about Ulixee at [ulixee.org](https://ulixee.org).
 

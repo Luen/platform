@@ -1,6 +1,6 @@
 # How to upgrade
 
-Run `npm install @ulixee/cloud@latest` to upgrade Hero to latest version.
+Run `pnpm install @ulixee/cloud@latest` to upgrade Hero to latest version.
 
 ### Problems after upgrading
 

@@ -1,6 +1,6 @@
 # How to upgrade
 
-Run `npm install @ulixee/datastore@latest` to upgrade Datastore to latest version.
+Run `pnpm install @ulixee/datastore@latest` to upgrade Datastore to latest version.
 
 ### Problems after upgrading
 
