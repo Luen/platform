@@ -92,14 +92,14 @@ jobs:
         working-directory: ..
 
       - name: Install Hero
-        run: yarn build
+        run: pnpm install --frozen-lockfile build
         working-directory: ../hero
 
-      - name: Set yarn config
-        run: yarn config set ignore-engines true && yarn config set frozen-lockfile true
+      - name: Set pnpm run config
+        run: pnpm install --frozen-lockfile config set ignore-engines true && pnpm run config set frozen-lockfile true
 
       - name: Yarn build
-        run: yarn build
+        run: pnpm install --frozen-lockfile build
         env:
           ELECTRON_SKIP_BINARY_DOWNLOAD: 1
 
@@ -109,10 +109,10 @@ jobs:
 
       - name: Run Lint
         if: ${{ matrix.node-version == 18 }}
-        run: NODE_OPTIONS=--max-old-space-size=4096 yarn lint
+        run: NODE_OPTIONS=--max-old-space-size=4096 pnpm run lint
 
       - name: Run tests
-        run: yarn test --testTimeout=60000 --runInBand
+        run: pnpm install --frozen-lockfile test --testTimeout=60000 --runInBand
         env:
           ADD_DOCKER_HOST: true
           ULX_USE_DOCKER_BINS: 1
@@ -194,21 +194,21 @@ jobs:
         working-directory: ..
 
       - name: Install Hero
-        run: yarn build
+        run: pnpm install --frozen-lockfile build
         working-directory: ../hero
 
       - name: Install Deps
-        run: yarn config set ignore-engines true
+        run: pnpm install --frozen-lockfile config set ignore-engines true
 
       - name: Yarn build
-        run: yarn build
+        run: pnpm install --frozen-lockfile build
         env:
           ELECTRON_SKIP_BINARY_DOWNLOAD: 1
           ULX_MITM_REBUILD_SOCKET: 0
           NODE_OPTIONS: --max_old_space_size=4096
 
       - name: Run tests
-        run: yarn test --testTimeout=60000 --maxWorkers=2
+        run: pnpm install --frozen-lockfile test --testTimeout=60000 --maxWorkers=2
         env:
           SKIP_E2E: true
           CI: true

@@ -23,7 +23,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: yarn
+          cache: pnpm
 
       - name: Clone Hero
         run: |
@@ -33,14 +33,14 @@ jobs:
         working-directory: ..
 
       - name: Install Hero
-        run: yarn build:simple
+        run: pnpm install --frozen-lockfile build:simple
         working-directory: ../hero
 
       - name: Set timeout
-        run: yarn config set network-timeout 1000000 -g
+        run: pnpm install --frozen-lockfile config set network-timeout 1000000 -g
 
       - name: Build modules
-        run: yarn install --frozen-lockfile --ignore-engines && yarn build:dist
+        run: pnpm install --frozen-lockfile install --frozen-lockfile --ignore-engines && pnpm run build:dist
 
       - name: Publish branch
         run: |

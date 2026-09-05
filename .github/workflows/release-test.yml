@@ -43,7 +43,7 @@ jobs:
         if: ${{ matrix.os == 'windows-latest' }}
 
       - name: Yarn build
-        run: yarn --ignore-engines && yarn build --ignore-engines
+        run: pnpm install --frozen-lockfile --ignore-engines && pnpm run build --ignore-engines
         env:
           ELECTRON_SKIP_BINARY_DOWNLOAD: 1
 
@@ -53,7 +53,7 @@ jobs:
         run: sudo $(npx install-browser-deps)
 
       - name: Run tests
-        run: yarn test --testTimeout=60000 --maxWorkers=2
+        run: pnpm install --frozen-lockfile test --testTimeout=60000 --maxWorkers=2
         env:
           SKIP_E2E: true
           CI: true
