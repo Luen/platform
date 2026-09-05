@@ -50,9 +50,13 @@ jobs:
           submodules: 'true'
 
       - name: Setup pnpm
+
         uses: pnpm/action-setup@v4
+
         with:
+
           version: 10.33.0
+
 
       - uses: actions/setup-node@v4
         with:
@@ -97,14 +101,14 @@ jobs:
         working-directory: ..
 
       - name: Install Hero
-        run: pnpm install --frozen-lockfile build
+        run: yarn build
         working-directory: ../hero
 
-      - name: Set pnpm run config
-        run: pnpm install --frozen-lockfile config set ignore-engines true && pnpm run config set frozen-lockfile true
+      - name: Set yarn config
+        run: echo "frozen-lockfile via pnpm flag"
 
       - name: Build
-        run: pnpm install --frozen-lockfile build
+        run: pnpm run build
         env:
           ELECTRON_SKIP_BINARY_DOWNLOAD: 1
 
@@ -117,7 +121,7 @@ jobs:
         run: NODE_OPTIONS=--max-old-space-size=4096 pnpm run lint
 
       - name: Run tests
-        run: pnpm install --frozen-lockfile test --testTimeout=60000 --runInBand
+        run: pnpm test --testTimeout=60000 --runInBand
         env:
           ADD_DOCKER_HOST: true
           ULX_USE_DOCKER_BINS: 1
@@ -157,9 +161,13 @@ jobs:
           submodules: 'true'
 
       - name: Setup pnpm
+
         uses: pnpm/action-setup@v4
+
         with:
+
           version: 10.33.0
+
 
       - uses: actions/setup-node@v4
         with:
@@ -204,21 +212,21 @@ jobs:
         working-directory: ..
 
       - name: Install Hero
-        run: pnpm install --frozen-lockfile build
+        run: yarn build
         working-directory: ../hero
 
       - name: Install Deps
-        run: pnpm install --frozen-lockfile config set ignore-engines true
+        run: echo "engines policy: CI"
 
       - name: Build
-        run: pnpm install --frozen-lockfile build
+        run: pnpm run build
         env:
           ELECTRON_SKIP_BINARY_DOWNLOAD: 1
           ULX_MITM_REBUILD_SOCKET: 0
           NODE_OPTIONS: --max_old_space_size=4096
 
       - name: Run tests
-        run: pnpm install --frozen-lockfile test --testTimeout=60000 --maxWorkers=2
+        run: pnpm test --testTimeout=60000 --maxWorkers=2
         env:
           SKIP_E2E: true
           CI: true

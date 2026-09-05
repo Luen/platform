@@ -21,15 +21,15 @@ jobs:
         working-directory: cloud/main
         run: export VERSION=$(node -p "require('./package.json').version") && echo "VERSION=$VERSION" >> $GITHUB_ENV
 
-      - name: Install pnpm run packages
-        run: pnpm install --frozen-lockfile install
+      - name: Install yarn packages
+        run: pnpm install --frozen-lockfile
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Determine Chrome Versions
         shell: bash
         run: |
-          CHROME_PACKAGE=$(pnpm run list --pattern '@ulixee/chrome-' --depth=0 | grep '@ulixee/chrome-' | grep -Eo 'chrome-[0-9]+-0' | head -1)
+          CHROME_PACKAGE=$(yarn list --pattern '@ulixee/chrome-' --depth=0 | grep '@ulixee/chrome-' | grep -Eo 'chrome-[0-9]+-0' | head -1)
 
           CHROME_VERSION=$(echo $CHROME_PACKAGE | awk -F'-' '{print $2}')
           PREVIOUS_CHROME_VERSION=$((CHROME_VERSION - 1))
@@ -58,7 +58,7 @@ jobs:
             \
             --build-arg BUILD_DATE=${BUILD_DATE} \
             --build-arg GITHUB_SHA=${GITHUB_SHA} \
-            --build-arg ADD_TO_INSTALL="pnpm run add "@ulixee/chrome-$ADD_CHROME_VERSION-0"" \
+            --build-arg ADD_TO_INSTALL="yarn add "@ulixee/chrome-$ADD_CHROME_VERSION-0"" \
             --build-arg VERSION=${VERSION} \
             \
             --tag ghcr.io/${IMAGE}:v${VERSION} \

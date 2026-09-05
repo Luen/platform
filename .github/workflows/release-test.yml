@@ -28,14 +28,18 @@ jobs:
           submodules: 'true'
 
       - name: Setup pnpm
+
         uses: pnpm/action-setup@v4
+
         with:
+
           version: 10.33.0
+
 
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: pnpm
+          cache: 'npm'
 
       - name: Chocolatey Install Action
         if: ${{ matrix.os == 'windows-latest' }}
@@ -48,7 +52,7 @@ jobs:
         if: ${{ matrix.os == 'windows-latest' }}
 
       - name: Build
-        run: pnpm install --frozen-lockfile --ignore-engines && pnpm run build --ignore-engines
+        run: yarn --ignore-engines && Build --ignore-engines
         env:
           ELECTRON_SKIP_BINARY_DOWNLOAD: 1
 
@@ -58,7 +62,7 @@ jobs:
         run: sudo $(npx install-browser-deps)
 
       - name: Run tests
-        run: pnpm install --frozen-lockfile test --testTimeout=60000 --maxWorkers=2
+        run: pnpm test --testTimeout=60000 --maxWorkers=2
         env:
           SKIP_E2E: true
           CI: true
