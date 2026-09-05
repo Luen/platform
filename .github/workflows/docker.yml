@@ -1,4 +1,4 @@
-name: Docker
+﻿name: Docker
 
 on:
   release:
@@ -21,7 +21,7 @@ jobs:
         working-directory: cloud/main
         run: export VERSION=$(node -p "require('./package.json').version") && echo "VERSION=$VERSION" >> $GITHUB_ENV
 
-      - name: Install yarn packages
+      - name: Install packages
         run: pnpm install --frozen-lockfile
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -29,7 +29,7 @@ jobs:
       - name: Determine Chrome Versions
         shell: bash
         run: |
-          CHROME_PACKAGE=$(yarn list --pattern '@ulixee/chrome-' --depth=0 | grep '@ulixee/chrome-' | grep -Eo 'chrome-[0-9]+-0' | head -1)
+          CHROME_PACKAGE=$(pnpm list --depth 0 | cat | grep '@ulixee/chrome-' | grep -Eo 'chrome-[0-9]+-0' | head -1)
 
           CHROME_VERSION=$(echo $CHROME_PACKAGE | awk -F'-' '{print $2}')
           PREVIOUS_CHROME_VERSION=$((CHROME_VERSION - 1))
@@ -86,3 +86,4 @@ jobs:
 
       - name: Push Image to Dockerhub
         run: docker push -a docker.io/${IMAGE}
+

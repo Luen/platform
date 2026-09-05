@@ -1,4 +1,4 @@
-name: Release Test Matrix
+﻿name: Release Test Matrix
 
 on:
   push:
@@ -52,7 +52,7 @@ jobs:
         if: ${{ matrix.os == 'windows-latest' }}
 
       - name: Build
-        run: yarn --ignore-engines && Build --ignore-engines
+        run: pnpm install --frozen-lockfile && pnpm run build
         env:
           ELECTRON_SKIP_BINARY_DOWNLOAD: 1
 
@@ -79,3 +79,4 @@ jobs:
           name: test-dbs-${{matrix.os}}-${{ matrix.node-version }}
           path: test-dbs.tar
           retention-days: 1
+

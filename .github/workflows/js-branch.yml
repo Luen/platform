@@ -1,4 +1,4 @@
-name: 'Publish a built Javascript Branch'
+﻿name: 'Publish a built Javascript Branch'
 
 on:
   push:
@@ -49,7 +49,7 @@ jobs:
         run: pnpm config set network-timeout 1000000
 
       - name: Build modules
-        run: pnpm install --frozen-lockfile --ignore-engines && Build:dist
+        run: pnpm install --frozen-lockfile && pnpm run build:dist
 
       - name: Publish branch
         run: |
@@ -65,3 +65,4 @@ jobs:
         shell: bash
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
