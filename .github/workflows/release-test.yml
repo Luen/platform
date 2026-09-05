@@ -30,7 +30,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          cache: pnpm
 
       - name: Chocolatey Install Action
         if: ${{ matrix.os == 'windows-latest' }}
@@ -42,7 +42,7 @@ jobs:
         uses: microsoft/setup-msbuild@v2
         if: ${{ matrix.os == 'windows-latest' }}
 
-      - name: Yarn build
+      - name: Build
         run: pnpm install --frozen-lockfile --ignore-engines && pnpm run build --ignore-engines
         env:
           ELECTRON_SKIP_BINARY_DOWNLOAD: 1

@@ -52,7 +52,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: pnpm
 
       - uses: actions/setup-go@v5
         with:
@@ -98,7 +98,7 @@ jobs:
       - name: Set pnpm run config
         run: pnpm install --frozen-lockfile config set ignore-engines true && pnpm run config set frozen-lockfile true
 
-      - name: Yarn build
+      - name: Build
         run: pnpm install --frozen-lockfile build
         env:
           ELECTRON_SKIP_BINARY_DOWNLOAD: 1
@@ -154,7 +154,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: pnpm
 
       - uses: actions/setup-go@v5
         with:
@@ -200,7 +200,7 @@ jobs:
       - name: Install Deps
         run: pnpm install --frozen-lockfile config set ignore-engines true
 
-      - name: Yarn build
+      - name: Build
         run: pnpm install --frozen-lockfile build
         env:
           ELECTRON_SKIP_BINARY_DOWNLOAD: 1
